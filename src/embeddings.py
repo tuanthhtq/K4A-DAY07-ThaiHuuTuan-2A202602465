@@ -38,7 +38,7 @@ class LocalEmbedder:
 
         self.model_name = model_name
         self._backend_name = model_name
-        self.model = SentenceTransformer(model_name)
+        self.model = SentenceTransformer(model_name, device="cpu")
 
     def __call__(self, text: str) -> list[float]:
         embedding = self.model.encode(text, normalize_embeddings=True)

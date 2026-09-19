@@ -1,0 +1,76 @@
+=== LAB 07 RETRIEVAL BENCHMARK ===
+Data directory: data\university
+Embedding backend: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Chunking strategy: heading
+Chunk size: 800
+Source documents: 8
+Stored chunks: 190
+
+--- QUERY 1 ---
+Question: Ký túc xá mở cửa và đóng cửa lúc mấy giờ?
+Gold answer: Giờ mở cửa là 05:00 và giờ đóng cửa là 22:00.
+Metadata filter: None
+  1. score=0.7163 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=3
+     ## Điều 1. Giờ giấc sinh hoạt, học tập 1. Giờ mở, đóng cửa: giờ mở cửa 05:00’; giờ đóng cửa 22:00’. ▪ Sinh viên đi làm thêm ngoài giờ học để tích lũy kinh nghiệm và có thêm chi phí sinh hoạt, nếu có nhu cầu và minh chứng
+  2. score=0.5907 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=4
+     ## Điều 1. Giờ giấc sinh hoạt, học tập 3. Giờ sinh hoạt: từ 7:30’ đến 11:00’ sáng; và từ 14:00’ đến 22:30’ tối. ▪ Trong giờ sinh hoạt, viên chức Ký túc xá, Đội sinh viên tự quản sẽ thường xuyên kiểm tra tình hình an ninh
+  3. score=0.5743 doc_id=ktx-noi-quy chunk=8
+     ## 1.6. Thực hiện đúng quy định về đăng ký tạm trú, tạm vắng. Vắng mặt 01 ngày báo cho Tổ trưởng phòng ở, vắng mặt từ 02 ngày trở lên phải có đơn báo tạm vắng nộp cho viên chức quản lý Ký túc xá thông qua Đội sinh viên t
+Retrieval score: 2/2
+
+--- QUERY 2 ---
+Question: Sinh viên đang bị kỷ luật từ mức nào thì không được đăng ký ở Ký túc xá TDTU?
+Gold answer: Sinh viên đang thi hành kỷ luật cấp trường từ mức khiển trách trở lên không được đăng ký.
+Metadata filter: None
+  1. score=0.7555 doc_id=quy-che-hssv-noi-tru chunk=0
+     # Thông tư 27/2011/TT-BGDĐT - Quy chế công tác học sinh sinh viên nội trú
+  2. score=0.6417 doc_id=ktx-noi-quy chunk=14
+     ## 1.11. Sinh viên nội trú phải tích cực tham gia các hoạt động thể dục thể thao (TDTT), phải là thành viên của ít nhất 01 câu lạc bộ TDTT của Trường, của Ký túc xá. Việc tham gia vào các câu lạc bộ TDTT sẽ là một trong 
+  3. score=0.6379 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=11
+     ## Điều 3. Văn hóa và ứng xử Không phản ánh, khiếu nại nặc danh, vượt cấp. Nghiêm cấm việc phản ánh thiếu trung thực, một chiều các hoạt động tại Ký túc xá ra bên ngoài, trên mạng xã hội; tạo dư luận xấu và làm bất ổn đế
+Retrieval score: 0/2
+
+--- QUERY 3 ---
+Question: Sinh viên vắng mặt tại khu nội trú quá bao lâu thì phải báo Ban quản lý?
+Gold answer: Nếu vắng mặt quá 1 ngày, sinh viên phải báo với Ban quản lý khu nội trú.
+Metadata filter: None
+  1. score=0.7544 doc_id=quy-che-hssv-noi-tru chunk=24
+     ## Điều 6. Nghĩa vụ của học sinh, sinh viên nội trú 1. Thực hiện đăng ký tạm trú theo đúng quy định của Luật Cư trú hiện hành. Nếu vắng mặt tại khu nội trú quá 1 ngày phải báo với Ban quản lý khu nội trú. 2. Chấp hành cá
+  2. score=0.7235 doc_id=ktx-noi-quy chunk=8
+     ## 1.6. Thực hiện đúng quy định về đăng ký tạm trú, tạm vắng. Vắng mặt 01 ngày báo cho Tổ trưởng phòng ở, vắng mặt từ 02 ngày trở lên phải có đơn báo tạm vắng nộp cho viên chức quản lý Ký túc xá thông qua Đội sinh viên t
+  3. score=0.6851 doc_id=ktx-ktxhcm-tan-sinh-vien chunk=15
+     ## Bước 8 Nhập mã xác thực và hoàn tất Trường hợp được duyệt: sinh viên có 3 ngày để hoàn tất thanh toán. Quá thời hạn 3 ngày mà chưa thanh toán, đơn đăng ký sẽ tự động bị hủy để nhường chỗ cho sinh viên khác. Trường hợp
+Retrieval score: 2/2
+
+--- QUERY 4 ---
+Question: Hồ sơ đăng ký nội trú TDTU cần những giấy tờ cơ bản nào?
+Gold answer: Hồ sơ gồm phiếu đăng ký ở nội trú, bản sao Căn cước công dân/Căn cước, giấy tờ minh chứng diện ưu tiên nếu có và giấy xác nhận cư trú khi cần.
+Metadata filter: None
+  1. score=0.6801 doc_id=ktx-tdtu-dang-ky-noi-tru chunk=4
+     ## II. Hồ sơ đăng ký & thứ tự đối tượng ưu tiên xét tiếp nhận nội trú Những hồ sơ sinh viên cần chuẩn bị bao gồm: - 01 Phiếu đăng ký ở nội trú (Tân sinh viên đăng ký và in ra từ hệ thống nhập học trực tuyến). - 01 Bản sa
+  2. score=0.5137 doc_id=quy-che-hssv-noi-tru chunk=0
+     # Thông tư 27/2011/TT-BGDĐT - Quy chế công tác học sinh sinh viên nội trú
+  3. score=0.5094 doc_id=ktx-tdtu-dang-ky-noi-tru chunk=7
+     ## II. Hồ sơ đăng ký & thứ tự đối tượng ưu tiên xét tiếp nhận nội trú 8 Sinh viên là con, là anh chị em ruột của Cán bộ công đoàn hiện là Ủy viên Ban chấp hành cấp trên cơ sở trở lên - Quyết định công nhận Ủy viên Ban ch
+Retrieval score: 2/2
+
+--- QUERY 5 ---
+Question: Những đối tượng nào được ưu tiên xét chỗ ở?
+Gold answer: Đối với sinh viên, các nhóm ưu tiên gồm diện chính sách, người khuyết tật, mồ côi, sinh viên thuộc hộ nghèo hoặc vùng có điều kiện khó khăn.
+Metadata filter: {'audience': 'student'}
+  1. score=0.5520 doc_id=ktx-noi-quy chunk=10
+     ## 1.8. Thực hiện nghĩa vụ đầy đủ về trật tự và vệ sinh Ký túc xá: a) Hoàn thành nhiệm vụ trực phòng, trực hành lang và khu vực chung… theo lịch phân công; tích cực tham gia vệ sinh môi trường, cảnh quan xung quanh Ký tú
+  2. score=0.5127 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=5
+     ## Điều 2. An ninh, trật tự 1. Sinh viên nội trú có ý thức bảo vệ tài sản công, bảo vệ tài sản cá nhân. Tự trang bị khóa tủ, hộc bàn để cất giữ, bảo quản tài sản tư trang và đồ đạc cá nhân, đặc biệt tài sản có giá trị lớ
+  3. score=0.5124 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=7
+     ## Điều 3. Văn hóa và ứng xử 1. Nhiệm vụ của Tổ trưởng phòng ở: a) Tham gia đầy đủ các buổi sinh hoạt, họp giao ban định kỳ và đột xuất tại Ký túc xá; có trách nhiệm truyền đạt đầy đủ, kịp thời và chính xác những thông t
+Retrieval score: 0/2
+  A/B without metadata filter:
+  1. score=0.5733 doc_id=nha-cong-vu-can-bo chunk=6
+     ## QUY MÔ & HẠ TẦNG nhằm bổ sung quỹ nhà ở công vụ và tối ưu nguồn lực đầu tư. 02 block nhà 112 căn hộ Khoảng 250 cư dân sinh sống Khu vực này có mật độ xây dựng thấp, nhiều không gian cây xanh và khu sinh hoạt chung, ph
+  2. score=0.5562 doc_id=nha-cong-vu-can-bo chunk=2
+     ## GIỚI THIỆU CHUNG cho sự nghiệp giáo dục và đào tạo. Toàn cảnh khu nhà công vụ 1 Không gian các khu nhà công vụ được quy hoạch theo hướng tối ưu công năng sử dụng, đảm bảo thông thoáng, an toàn và phù hợp cho sinh hoạt
+  3. score=0.5520 doc_id=ktx-noi-quy chunk=10
+     ## 1.8. Thực hiện nghĩa vụ đầy đủ về trật tự và vệ sinh Ký túc xá: a) Hoàn thành nhiệm vụ trực phòng, trực hành lang và khu vực chung… theo lịch phân công; tích cực tham gia vệ sinh môi trường, cảnh quan xung quanh Ký tú
+
+TOTAL RETRIEVAL SCORE: 6/10

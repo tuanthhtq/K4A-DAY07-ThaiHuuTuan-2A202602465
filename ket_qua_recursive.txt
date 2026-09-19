@@ -1,0 +1,76 @@
+=== LAB 07 RETRIEVAL BENCHMARK ===
+Data directory: data\university
+Embedding backend: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Chunking strategy: recursive
+Chunk size: 800
+Source documents: 8
+Stored chunks: 102
+
+--- QUERY 1 ---
+Question: Ký túc xá mở cửa và đóng cửa lúc mấy giờ?
+Gold answer: Giờ mở cửa là 05:00 và giờ đóng cửa là 22:00.
+Metadata filter: None
+  1. score=0.6490 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=0
+     # Quy định sinh hoạt học tập ứng xử nội trú Ký túc xá ## QUI ĐỊNH VỀ SINH HOẠT, HỌC TẬP VÀ ỨNG XỬ ## ĐỐI VỚI NGƯỜI Ở NỘI TRÚ ## Điều 1. Giờ giấc sinh hoạt, học tập 1. Giờ mở, đóng cửa: giờ mở cửa 05:00’; giờ đóng cửa 22:
+  2. score=0.6008 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=1
+     ▪ Đúng 22:30’ tất cả các phòng ở nội trú phải tắt đèn trong phòng, đèn ngoài ban công, hành lang và cầu thang bộ. Chỉ được sử dụng đèn cá nhân để học tập vào ban đêm. Sau 22:30’ nghiêm cấm sinh viên nội trú tụ tập nô đùa
+  3. score=0.5464 doc_id=ktx-ktxhcm-tan-sinh-vien chunk=9
+     Hồ sơ chỉ được xem là hoàn tất khi sinh viên thực hiện đầy đủ cả hai nội dung: đăng ký chỗ ở và đăng ký hoạt động. Một số lưu ý quan trọng Đơn đăng ký sẽ được duyệt trong vòng 24 giờ. Trường hợp được duyệt: sinh viên có 
+Retrieval score: 2/2
+
+--- QUERY 2 ---
+Question: Sinh viên đang bị kỷ luật từ mức nào thì không được đăng ký ở Ký túc xá TDTU?
+Gold answer: Sinh viên đang thi hành kỷ luật cấp trường từ mức khiển trách trở lên không được đăng ký.
+Metadata filter: None
+  1. score=0.7408 doc_id=ktx-tdtu-dang-ky-noi-tru chunk=2
+     - Sinh viên, người học đang bị xử lý và đang trong thời gian thi hành kỷ luật cấp trường từ mức khiển trách trở lên không được đăng ký ở Ký túc xá. ## II. Hồ sơ đăng ký & thứ tự đối tượng ưu tiên xét tiếp nhận nội trú Nh
+  2. score=0.6685 doc_id=ktx-noi-quy chunk=4
+     ## 1.11. Sinh viên nội trú phải tích cực tham gia các hoạt động thể dục thể thao (TDTT), phải là thành viên của ít nhất 01 câu lạc bộ TDTT của Trường, của Ký túc xá. Việc tham gia vào các câu lạc bộ TDTT sẽ là một trong 
+  3. score=0.6599 doc_id=quy-che-hssv-noi-tru chunk=0
+     # Thông tư 27/2011/TT-BGDĐT - Quy chế công tác học sinh sinh viên nội trú ## BỘ GIÁO DỤC VÀ ĐÀO TẠO Số: 27/2011/TT-BGDĐT ## CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM Độc lập - Tự do - Hạnh phúc Hà Nội, ngày 27 tháng 06 năm 2011
+Retrieval score: 2/2
+
+--- QUERY 3 ---
+Question: Sinh viên vắng mặt tại khu nội trú quá bao lâu thì phải báo Ban quản lý?
+Gold answer: Nếu vắng mặt quá 1 ngày, sinh viên phải báo với Ban quản lý khu nội trú.
+Metadata filter: None
+  1. score=0.6516 doc_id=ktx-ktxhcm-tan-sinh-vien chunk=9
+     Hồ sơ chỉ được xem là hoàn tất khi sinh viên thực hiện đầy đủ cả hai nội dung: đăng ký chỗ ở và đăng ký hoạt động. Một số lưu ý quan trọng Đơn đăng ký sẽ được duyệt trong vòng 24 giờ. Trường hợp được duyệt: sinh viên có 
+  2. score=0.6416 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=0
+     # Quy định sinh hoạt học tập ứng xử nội trú Ký túc xá ## QUI ĐỊNH VỀ SINH HOẠT, HỌC TẬP VÀ ỨNG XỬ ## ĐỐI VỚI NGƯỜI Ở NỘI TRÚ ## Điều 1. Giờ giấc sinh hoạt, học tập 1. Giờ mở, đóng cửa: giờ mở cửa 05:00’; giờ đóng cửa 22:
+  3. score=0.6341 doc_id=quy-che-hssv-noi-tru chunk=10
+     4. Được kiến nghị với Trưởng ban quản lý khu nội trú và nhà trường các giải pháp để góp phần xây dựng khu nội trú văn minh, sạch đẹp, an toàn; được đề đạt nguyện vọng và khiếu nại lên trưởng ban quản lý khu nội trú của n
+Retrieval score: 1/2
+
+--- QUERY 4 ---
+Question: Hồ sơ đăng ký nội trú TDTU cần những giấy tờ cơ bản nào?
+Gold answer: Hồ sơ gồm phiếu đăng ký ở nội trú, bản sao Căn cước công dân/Căn cước, giấy tờ minh chứng diện ưu tiên nếu có và giấy xác nhận cư trú khi cần.
+Metadata filter: None
+  1. score=0.5630 doc_id=ktx-ktxhcm-tan-sinh-vien chunk=3
+     Thông tin khai báo: Chuẩn bị sẵn thông tin cá nhân, thông tin liên hệ của gia đình và đặc biệt là email cá nhân chính chủ đang sử dụng để nhận mã xác thực trong quá trình đăng ký và nhận các thông báo từ Trung tâm. Diện 
+  2. score=0.5522 doc_id=ktx-tdtu-dang-ky-noi-tru chunk=2
+     - Sinh viên, người học đang bị xử lý và đang trong thời gian thi hành kỷ luật cấp trường từ mức khiển trách trở lên không được đăng ký ở Ký túc xá. ## II. Hồ sơ đăng ký & thứ tự đối tượng ưu tiên xét tiếp nhận nội trú Nh
+  3. score=0.4993 doc_id=ktx-ktxhcm-tan-sinh-vien chunk=4
+     4. Giấy tờ minh chứng thuộc đối tượng xét miễn, giảm, gồm một trong các loại giấy tờ sau: - Giấy xác nhận khuyết tật; - Giấy chứng nhận mồ côi cả cha lẫn mẹ; - Giấy chứng nhận mồ côi cha hoặc mồ côi mẹ; - Giấy xác nhận h
+Retrieval score: 1/2
+
+--- QUERY 5 ---
+Question: Những đối tượng nào được ưu tiên xét chỗ ở?
+Gold answer: Đối với sinh viên, các nhóm ưu tiên gồm diện chính sách, người khuyết tật, mồ côi, sinh viên thuộc hộ nghèo hoặc vùng có điều kiện khó khăn.
+Metadata filter: {'audience': 'student'}
+  1. score=0.5663 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=4
+     b) Đại diện cho phòng ở đề đạt nguyện vọng, thắc mắc (nếu có) tới viên chức quản lý Ký túc xá để được giải quyết. c) Bảo đảm an ninh trật tự, vệ sinh trong phòng; phân công trực nhật đầy đủ và hợp lý; có trách nhiệm ngăn
+  2. score=0.5627 doc_id=ktx-quy-dinh-sinh-hoat-ung-xu chunk=2
+     1. Sinh viên nội trú có ý thức bảo vệ tài sản công, bảo vệ tài sản cá nhân. Tự trang bị khóa tủ, hộc bàn để cất giữ, bảo quản tài sản tư trang và đồ đạc cá nhân, đặc biệt tài sản có giá trị lớn. 2. Người cuối cùng trước 
+  3. score=0.5520 doc_id=ktx-noi-quy chunk=2
+     ## 1.8. Thực hiện nghĩa vụ đầy đủ về trật tự và vệ sinh Ký túc xá: a) Hoàn thành nhiệm vụ trực phòng, trực hành lang và khu vực chung… theo lịch phân công; tích cực tham gia vệ sinh môi trường, cảnh quan xung quanh Ký tú
+Retrieval score: 0/2
+  A/B without metadata filter:
+  1. score=0.6282 doc_id=quy-che-hssv-noi-tru chunk=7
+     3. khu nội trú phải có nội quy đặt ở nơi dễ quan sát; có phòng trực, văn phòng làm việc của Ban quản lý khu nội trú; có các phương tiện để phục vụ thông tin, phát thanh tuyên truyền cho HSSV trong khu nội trú. 4. Nhà, ph
+  2. score=0.6201 doc_id=quy-che-hssv-noi-tru chunk=11
+     2. Chấp hành các quy định của khu nội trú về việc tiếp khách trong phòng ở, giờ tự học, tổ chức các sinh hoạt văn hóa, văn nghệ, không gây ảnh hưởng đến việc học tập, sinh hoạt của HSSV khác trong phòng ở và khu nội trú.
+  3. score=0.5977 doc_id=nha-cong-vu-can-bo chunk=1
+     giúp người ở yên tâm công tác, giảng dạy, nghiên cứu và cống hiến lâu dài cho sự nghiệp giáo dục và đào tạo. Toàn cảnh khu nhà công vụ 1 Không gian các khu nhà công vụ được quy hoạch theo hướng tối ưu công năng sử dụng, 
+
+TOTAL RETRIEVAL SCORE: 6/10
