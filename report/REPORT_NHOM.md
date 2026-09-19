@@ -2,7 +2,7 @@
 
 **Nhóm:** [Cần bổ sung]
 
-**Thành viên:** Thái Hữu Tuấn (2A202602465); [Cần bổ sung các thành viên khác]
+**Thành viên:** Thái Hữu Tuấn (2A202602465); Đàm Quang Trung (02525)
 
 **Ngày:** 19/09/2026
 
@@ -88,23 +88,22 @@ for each_heading_section in sections:
     chunks.extend(split_section_with_heading_prefix(each_heading_section))
 ```
 
-**Thành viên 2 — [Cần bổ sung]**
-- **Loại chiến lược:** [Cần bổ sung]
-- **Mô tả & lý do chọn:** [Cần bổ sung]
-- **Code snippet (nếu custom):** [Cần bổ sung]
+**Thành viên 2 — Đàm Quang Trung (02525)**
+- **Loại chiến lược:** `FixedSizeChunker`, `chunk_size=800`, `overlap=80` (10%).
+- **Mô tả & lý do chọn:** Fixed là mốc đối chứng không phụ thuộc cấu trúc cho nhóm: nó cắt theo số ký tự, không nhìn heading hay đoạn, nên chênh lệch giữa Fixed và Heading/Recursive chính là giá trị mà việc hiểu cấu trúc văn bản đem lại. Mốc này đặc biệt cần với corpus của nhóm vì 8 tài liệu đến từ 6 CMS khác nhau và cấu trúc không đồng đều — trang hướng dẫn tân sinh viên KTX TP.HCM sau khi làm sạch không còn heading nào, trong khi Thông tư 27 có 19 điều. Overlap 80 ký tự được chọn vì các con số quyết định câu trả lời (`22:00`, `quá 1 ngày`, `khiển trách trở lên`) thường nằm ở cuối câu quy định, đúng chỗ dễ bị cắt ngang.
+- **Code snippet (nếu custom):** Không custom; dùng trực tiếp `FixedSizeChunker` trong `src/chunking.py`, chọn bằng một dòng `STRATEGY = "fixed"` trong `bench.py`.
+- **Kết quả đã chạy:** 106 chunks, điểm truy xuất 6/10 (bảng nhóm).
+- **Chạy lại độc lập:** Trên corpus dựng lại từ cùng 8 URL bằng `scripts/build_corpus.py`, embedder `paraphrase-multilingual-MiniLM-L12-v2`, chấm theo hạng của chunk chứa đáp án như `docs/SCORING.md`: 133 chunks, 6/10, khớp điểm của bảng nhóm. Số chunk cao hơn vì bản làm sạch của Trung giữ nhiều văn bản hơn: tổng 92.737 ký tự so với 74.249 ký tự trong bảng Data Inventory (tỉ lệ 1,25, bằng tỉ lệ số chunk 133/106). Chi tiết từng câu nằm trong `REPORT_CANHAN.md` của Trung.
 
-**Thành viên 3 — [Cần bổ sung]**
-- **Loại chiến lược:** [Cần bổ sung]
-- **Mô tả & lý do chọn:** [Cần bổ sung]
-- **Code snippet (nếu custom):** [Cần bổ sung]
+Ngoài hai chiến lược cá nhân, nhóm chạy thêm `RecursiveChunker` với `chunk_size=800` và separator mặc định làm mốc đối chứng bổ sung. Chiến lược này tạo 102 chunks và đạt 6/10.
 
 ### So Sánh Giữa Các Thành Viên / Chiến Lược Đã Chạy
 
 | Người chạy | Chiến lược | Điểm truy xuất (/10) | Điểm mạnh | Điểm yếu |
 |------------|------------|-----------------------|-----------|----------|
 | Thái Hữu Tuấn | Heading | 6/10 | Chunk bám điều/mục, dễ đọc và truy vết nguồn. | Tạo 190 chunks; heading ngắn có thể được xếp hạng cao dù thiếu nội dung. |
-| [Cần bổ sung người phụ trách] | Fixed | 6/10 | Ít chunk hơn heading (106), đơn giản và nhanh. | Có thể cắt giữa từ, câu hoặc danh sách. |
-| [Cần bổ sung người phụ trách] | Recursive | 6/10 | Cân bằng độ dài với ranh giới ngữ nghĩa; 102 chunks. | Không bảo toàn rõ tên điều/mục như heading. |
+| Đàm Quang Trung | Fixed | 6/10 | Ít chunk hơn heading (106), đơn giản và nhanh. | Có thể cắt giữa từ, câu hoặc danh sách. |
+| Benchmark bổ sung của nhóm | Recursive | 6/10 | Cân bằng độ dài với ranh giới ngữ nghĩa; 102 chunks. | Không bảo toàn rõ tên điều/mục như heading. |
 
 **Chiến lược nào tốt nhất cho chủ đề này? Tại sao?**
 
@@ -155,7 +154,11 @@ Với câu 5, khi không lọc metadata, kết quả heading có hai chunk `nha-
 
 **Bài học rút ra khi so sánh trong nhóm:**
 
-[Cần bổ sung sau khi các thành viên thảo luận/demo. Hiện ba lần chạy Fixed, Recursive và Heading đều đạt 6/10 nhưng thất bại ở các câu khác nhau.]
+Ba lần chạy Fixed, Recursive và Heading đều đạt 6/10, nhưng điểm bằng nhau không có nghĩa là chúng hỏng giống nhau. Câu 2 chỉ Recursive đưa được chunk đúng vào top-3, trong khi Heading đẩy chunk chứa đáp án xuống hạng 44; ngược lại Heading là chiến lược đưa đúng Điều 6 lên top-1 ở câu 3 (score 0,7544) và danh sách hồ sơ lên top-1 ở câu 4 (0,6801). Nếu chỉ nhìn con số tổng, nhóm đã kết luận “ba chiến lược tương đương” và bỏ lỡ toàn bộ khác biệt thật.
+
+Điểm thứ hai: số chunk chênh nhau gần gấp đôi mà điểm không đổi. Heading sinh 190 chunk, Fixed 106, Recursive 102, cả ba vẫn 6/10. Chia nhỏ hơn không tự động cho truy xuất tốt hơn — nó chỉ đổi kiểu lỗi. Heading chia theo điều/mục nên điều kiện đăng ký ở câu 2 rơi vào cuối một chunk 662 ký tự và mất trọng số, đồng thời những chunk chỉ có tiêu đề ngắn lại dễ được xếp hạng cao dù không mang thông tin nào.
+
+Điểm thứ ba, và là điều nhóm thấy đáng giá nhất: câu 5 hỏng ở cả ba chiến lược. Metadata filter đã làm đúng phần việc của nó — loại sạch hai chunk `nha-cong-vu-can-bo` (`audience=faculty`) vốn chiếm top-2 khi không lọc — nhưng chunk chứa danh sách đối tượng ưu tiên vẫn không vào nổi top-3. Khi một câu hỏi hỏng bất kể chiến lược chunking nào, nút thắt không còn nằm ở chunking mà nằm ở chất lượng embedding/ranking cho tiếng Việt. Đó là hướng nhóm ưu tiên thử tiếp, thay vì tiếp tục tinh chỉnh tham số chunk.
 
 **Nếu làm lại, nhóm sẽ thay đổi gì trong chiến lược dữ liệu?**
 
@@ -170,5 +173,5 @@ Nhóm sẽ chuẩn hóa các mục dài thành các tiểu mục tự đủ ngh�
 | Lựa chọn tài liệu (Document Set Quality) | 10 / 10 |
 | Thiết kế chiến lược (Strategy Design) | 15 / 15 |
 | Chất lượng truy xuất (Retrieval Quality) | 6 / 10 |
-| Thuyết trình (Demo) | [Cần bổ sung] / 5 |
-| **Tổng phần nhóm** | **[Cần bổ sung sau demo] / 40** |
+| Thuyết trình (Demo) | [Cần bổ sung sau demo] / 5 |
+| **Tổng phần nhóm** | **31 + [điểm demo] / 40** |
